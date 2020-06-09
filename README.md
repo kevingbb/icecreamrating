@@ -1,1 +1,1 @@
-# icecreamrating
+# Ice Cream Rating API
