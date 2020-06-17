@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../processorders"
+		},
+		{
+			"path": "../processpos"
+		},
+		{
+			"path": "../processpubsub"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	}
+}
