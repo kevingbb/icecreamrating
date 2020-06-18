@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using Microsoft.Azure.Cosmos.Table;
 
 namespace icecream_api
 {
@@ -10,8 +10,10 @@ namespace icecream_api
     {
         [JsonProperty("id")]
         public Guid ID { get; set; }
+
         [JsonProperty("timestamp")]
         public DateTime Timestamp { get; set; }
+
         [JsonProperty("userId")]
         public Guid UserId { get; set; }
 
@@ -36,10 +38,13 @@ namespace icecream_api
             ID = Guid.NewGuid();
             Timestamp = System.DateTime.UtcNow;
         }
+
         [JsonProperty("id")]
         public Guid ID { get; set; }
+        
         [JsonProperty("timestamp")]
         public DateTime Timestamp { get; set; }
+        
         [JsonProperty("userId")]
         public Guid UserId { get; set; }
 
@@ -54,12 +59,32 @@ namespace icecream_api
 
         [JsonProperty("userNotes")]
         public string UserNotes { get; set; }
+
+        [JsonProperty("sentimentScore")]
+        public string SentimentScore { get; set; }
+
     }
 
-    public partial class RatingTable
+    public partial class RatingTable : TableEntity
     {
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
+        public string Text { get; set; }
+    }
+
+    public partial class SentimentPackage
+    {
+        [JsonProperty("documents")]
+        public Document[] Documents { get; set; }
+    }
+
+    public partial class Document
+    {
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
         public string Text { get; set; }
     }
 }
