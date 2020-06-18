@@ -109,6 +109,8 @@ namespace icecream_api
                 ratingTable.PartitionKey = data.userId;
                 ratingTable.RowKey = data.id;
                 ratingTable.Text = data.ToString();
+                log.LogTrace($"Rating {data.id}: {data.ToString}");
+                log.LogInformation($"Rating {data.id}: {data.ToString}");
                 msg.Add(ratingTable);
             }
             catch (Exception exc)
